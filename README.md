@@ -1,6 +1,6 @@
 # XGBoost Hybrid Architectures for Medical Image Classification
 
-Three XGBoost-based approaches are benchmarked against each other on two medical imaging datasets. The goal is to see how much the feature extraction strategy matters — raw pixels, PCA-compressed pixels, or deep features from VGG16.
+Three XGBoost-based approaches are benchmarked against each other on two medical imaging datasets. The goal is to see how much the feature extraction strategy matters raw pixels, PCA-compressed pixels, or deep features from VGG16.
 
 This builds directly on the previous exercises:
 - Exercise 1 used PCA + SVM. Here the SVM is swapped for XGBoost.
@@ -13,21 +13,10 @@ This builds directly on the previous exercises:
 **Chest X-Ray (Pneumonia)** — Binary classification: NORMAL (0) vs PNEUMONIA (1)  
 Source: [Chest X-Ray Images (Pneumonia) — Kaggle](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)
 
-| Split | NORMAL | PNEUMONIA | Total |
-|:---|:---|:---|:---|
-| Train | 1,341 | 3,875 | 5,216 |
-| Test | 234 | 390 | 624 |
-
 **Brain Tumor MRI** — 4-class: Glioma (0), Meningioma (1), Pituitary (2), No Tumor (3)  
 Source: [Brain Tumor Classification (MRI) — Kaggle](https://www.kaggle.com/datasets/sartajbhuvaji/brain-tumor-classification-mri)
 
-| Split | Glioma | Meningioma | Pituitary | No Tumor | Total |
-|:---|:---|:---|:---|:---|:---|
-| Train | 826 | 822 | 827 | 395 | 2,870 |
-| Test | 100 | 115 | 74 | 105 | 394 |
-
 Images are loaded at 150×150 grayscale for PCA and Raw XGBoost pipelines (22,500 features per image), and at 224×224 RGB for VGG16 feature extraction.
-
 ---
 
 ## Sample Images
@@ -42,7 +31,7 @@ Images are loaded at 150×150 grayscale for PCA and Raw XGBoost pipelines (22,50
 
 ---
 
-## Experiment 1 — PCA + XGBoost
+## 1 — PCA + XGBoost
 
 PCA reduces the 22,500 pixel features down to 100 principal components, then XGBoost is trained on those compressed vectors.
 
@@ -68,7 +57,7 @@ The chest model has very high sensitivity (it rarely misses a pneumonia case) bu
 
 ---
 
-## Experiment 2 — VGG16 + XGBoost
+## 2 — VGG16 + XGBoost
 
 VGG16 (ImageNet weights, no top layers) is used as a frozen feature extractor. Each image is passed through VGG16 to produce a 25,088-dimensional feature vector (7×7×512 spatial output, flattened). XGBoost then trains on those vectors.
 
@@ -98,9 +87,9 @@ VGG16 + XGBoost is the top performer on both datasets. The specificity improveme
 
 ---
 
-## Experiment 3 — Raw XGBoost (Baseline)
+## 3 — Raw XGBoost (Baseline)
 
-XGBoost is trained directly on the 22,500 raw pixel values with no preprocessing except normalisation. This is the baseline — no PCA, no neural feature extraction.
+XGBoost is trained directly on the 22,500 raw pixel values with no preprocessing except normalisation. This is the baseline, no PCA, no neural feature extraction.
 
 ### Results
 
@@ -109,7 +98,7 @@ XGBoost is trained directly on the 22,500 raw pixel values with no preprocessing
 | Chest X-Ray | 74.52% | 0.7061 | 0.9872 | 0.3419 |
 | Brain Tumor | 71.07% | 0.6658 | 0.6917 | 0.9014 |
 
-Raw XGBoost is the weakest on both datasets. 22,500 noisy pixel features are hard for a tree-based model to handle without some form of dimensionality reduction or feature learning. The chest model still achieves high sensitivity (it detects pneumonia well), but specificity collapses — it calls almost everything pneumonia.
+Raw XGBoost is the weakest on both datasets. 22,500 noisy pixel features are hard for a tree-based model to handle without some form of dimensionality reduction or feature learning. The chest model still achieves high sensitivity (it detects pneumonia well), but specificity collapses, it calls almost everything pneumonia.
 
 ### Confusion Matrices
 
@@ -132,7 +121,7 @@ VGG16 + XGBoost leads on both. PCA + XGBoost is a reasonable middle ground with 
 
 ---
 
-## Experiment 4 — Data Starvation Study
+## 4 — Data Starvation Study
 
 Each method is retrained on 20%, 40%, 60%, 80%, and 100% of the available training data. The test set stays fixed. This shows how each method degrades as training data shrinks.
 
