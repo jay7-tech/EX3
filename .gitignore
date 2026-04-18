@@ -1,24 +1,9 @@
-chest_xray/
-*.keras
-*.jpg
-*.jpeg
-*.png
-!svm_accuracy_trend.png
 .vscode/
 __pycache__/
 Exercise_3.ipynb
-brain_data
+brain_data/
+chest_xray/
 chest_xray_cnn.keras
 Simple Excercises (1).docx
 Exercise_2.ipynb
 Exercise_3 (fn) copy.ipynb
-!assets\brain_samples.png
-!assets\chest_samples.png
-!assets\final_accuracy_comparison.png
-!assets\cm_PCAplusXGB_Brain.png
-!assets\cm_PCAplusXGB_Chest.png
-!assets\cm_VGG16plusXGB_Brain.png
-!assets\cm_VGG16plusXGB_Chest.png
-!assets\cm_Raw_XGB_Brain.png
-!assets\cm_Raw_XGB_Chest.png
-!assets\xgboost_starvation_plot.png

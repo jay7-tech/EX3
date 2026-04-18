@@ -10,14 +10,16 @@ This builds directly on the previous exercises:
 
 ## Datasets
 
-**Chest X-Ray (Pneumonia)** — Binary classification: NORMAL (0) vs PNEUMONIA (1)
+**Chest X-Ray (Pneumonia)** — Binary classification: NORMAL (0) vs PNEUMONIA (1)  
+Source: [Chest X-Ray Images (Pneumonia) — Kaggle](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)
 
 | Split | NORMAL | PNEUMONIA | Total |
 |:---|:---|:---|:---|
 | Train | 1,341 | 3,875 | 5,216 |
 | Test | 234 | 390 | 624 |
 
-**Brain Tumor MRI** — 4-class: Glioma (0), Meningioma (1), Pituitary (2), No Tumor (3)
+**Brain Tumor MRI** — 4-class: Glioma (0), Meningioma (1), Pituitary (2), No Tumor (3)  
+Source: [Brain Tumor Classification (MRI) — Kaggle](https://www.kaggle.com/datasets/sartajbhuvaji/brain-tumor-classification-mri)
 
 | Split | Glioma | Meningioma | Pituitary | No Tumor | Total |
 |:---|:---|:---|:---|:---|:---|
