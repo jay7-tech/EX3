@@ -16,6 +16,7 @@ Source: [Chest X-Ray Images (Pneumonia) — Kaggle](https://www.kaggle.com/datas
 **Brain Tumor MRI** — 4-class: Glioma (0), Meningioma (1), Pituitary (2), No Tumor (3)  
 Source: [Brain Tumor Classification (MRI) — Kaggle](https://www.kaggle.com/datasets/sartajbhuvaji/brain-tumor-classification-mri)
 
+
 Images are loaded at 150×150 grayscale for PCA and Raw XGBoost pipelines (22,500 features per image), and at 224×224 RGB for VGG16 feature extraction.
 ---
 
@@ -47,7 +48,7 @@ Brain images are more visually diverse across classes, so PCA captures less of t
 | Chest X-Ray | 77.24% | 0.7442 | 0.9872 | 0.4145 |
 | Brain Tumor | 76.65% | 0.7181 | 0.7646 | 0.9211 |
 
-The chest model has very high sensitivity (it rarely misses a pneumonia case) but poor specificity — it over-predicts pneumonia, which is partly a class imbalance effect (pneumonia outnumbers normal ~3:1 in the training set). The brain model is more balanced: 4 classes means no single class dominates.
+The chest model has very high sensitivity (it rarely misses a pneumonia case) but poor specificity, it over-predicts pneumonia, which is partly a class imbalance effect (pneumonia outnumbers normal ~3:1 in the training set). The brain model is more balanced: 4 classes means no single class dominates.
 
 ### Confusion Matrices
 
@@ -61,7 +62,7 @@ The chest model has very high sensitivity (it rarely misses a pneumonia case) bu
 
 VGG16 (ImageNet weights, no top layers) is used as a frozen feature extractor. Each image is passed through VGG16 to produce a 25,088-dimensional feature vector (7×7×512 spatial output, flattened). XGBoost then trains on those vectors.
 
-This is the most compute-intensive step — VGG16 extraction ran for ~365 seconds on the chest training set and ~313 seconds on brain. The features are extracted once and reused.
+This is the most compute-intensive step , VGG16 extraction ran for ~365 seconds on the chest training set and ~313 seconds on brain. The features are extracted once and reused.
 
 **Feature vector sizes:**
 
