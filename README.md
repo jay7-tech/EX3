@@ -1,6 +1,4 @@
-# Exercise 3 — XGBoost Hybrid Architectures for Medical Image Classification
-
-## What this is
+# XGBoost Hybrid Architectures for Medical Image Classification
 
 Three XGBoost-based approaches are benchmarked against each other on two medical imaging datasets. The goal is to see how much the feature extraction strategy matters — raw pixels, PCA-compressed pixels, or deep features from VGG16.
 
