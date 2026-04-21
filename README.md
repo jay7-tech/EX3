@@ -4,8 +4,9 @@ Three XGBoost-based approaches are benchmarked against each other on two medical
 
 This builds directly on the previous exercises:
 - Exercise 1 used PCA + SVM. Here the SVM is swapped for XGBoost.
+ref: https://github.com/jay7-tech/EX1
 - Exercise 2 used VGG16 as a feature extractor for transfer learning. Here VGG16 is used to generate feature vectors that feed into XGBoost.
-
+ref: https://github.com/jay7-tech/EX2
 ---
 
 ## Datasets
