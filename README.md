@@ -33,7 +33,7 @@ Images are loaded at 150×150 grayscale for PCA and Raw XGBoost pipelines (22,50
 
 ---
 
-## 1 — PCA + XGBoost
+## 1  PCA + XGBoost
 
 PCA reduces the 22,500 pixel features down to 100 principal components, then XGBoost is trained on those compressed vectors.
 
@@ -59,7 +59,7 @@ The chest model has very high sensitivity (it rarely misses a pneumonia case) bu
 
 ---
 
-## 2 — VGG16 + XGBoost
+## 2  VGG16 + XGBoost
 
 VGG16 (ImageNet weights, no top layers) is used as a frozen feature extractor. Each image is passed through VGG16 to produce a 25,088-dimensional feature vector (7×7×512 spatial output, flattened). XGBoost then trains on those vectors.
 
@@ -89,7 +89,7 @@ VGG16 + XGBoost is the top performer on both datasets. The specificity improveme
 
 ---
 
-## 3 — Raw XGBoost (Baseline)
+## 3  Raw XGBoost (Baseline)
 
 XGBoost is trained directly on the 22,500 raw pixel values with no preprocessing except normalisation. This is the baseline, no PCA, no neural feature extraction.
 
